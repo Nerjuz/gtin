@@ -4,16 +4,25 @@ require_once 'vendor/autoload.php';
 
 use Real\Validator\Gtin;
 
-$gtin = [];
+//dd(Gtin\Factory::isValid(4836309084));
+function getGtin(int $length): string
+{
+    $result = '';
 
-while (!isset($gtin['gtin14']) && !Gtin\Factory::isValid($gtin['gtin14'])){
-    $gtin['gtin14'] = round(rand(10000000000000,99999999999999),1);
+    while (!Gtin\Factory::isValid($result)) {
+        $result = '';
+        for ($i = 0; $i < $length; $i++) {
+            $result .= random_int(0, 9);
+        }
+    }
+
+    return $result;
 }
 
-while (!isset($gtin['gtin12']) && !Gtin\Factory::isValid($gtin['gtin12'])){
-    $gtin['gtin12'] = round(rand(100000000000,999999999999),1);
-}
-while (!isset($gtin['gtin8']) && !Gtin\Factory::isValid($gtin['gtin8'])){
-    $gtin['gtin8'] = round(rand(10000000,99999999),1);
-}
-dump ( $gtin['gtin14']);
+$gtins = [
+    'gtin8' => getGtin(8),
+    'gtin12' => getGtin(12),
+    'gtin14' => getGtin(14),
+];
+
+dump($gtins);
