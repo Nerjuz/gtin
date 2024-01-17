@@ -16,7 +16,7 @@ while (!Gtin\Factory::isValid($gtin12)){
 while (!Gtin\Factory::isValid($gtin8)){
     $gtin8 = round(rand(10000000,99999999),1);
 }
-
+dump ('s');
 echo PHP_EOL.$gtin8.PHP_EOL;
 echo PHP_EOL.$gtin12.PHP_EOL;
 echo PHP_EOL.$gtin14.PHP_EOL;
