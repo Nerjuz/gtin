@@ -2,27 +2,13 @@
 
 require_once 'vendor/autoload.php';
 
-use Real\Validator\Gtin;
-
-//dd(Gtin\Factory::isValid(4836309084));
-function getGtin(int $length): string
-{
-    $result = '';
-
-    while (!Gtin\Factory::isValid($result)) {
-        $result = '';
-        for ($i = 0; $i < $length; $i++) {
-            $result .= random_int(0, 9);
-        }
-    }
-
-    return $result;
-}
+$gtinFactory = new App\GtinGenerator();
 
 $gtins = [
-    'gtin8' => getGtin(8),
-    'gtin12' => getGtin(12),
-    'gtin14' => getGtin(14),
+    'gtin8' => $gtinFactory->getGtin(8),
+    'gtin12' => $gtinFactory->getGtin(12),
+    'gtin13' => $gtinFactory->getGtin(13),
+    'gtin14' => $gtinFactory->getGtin(14),
 ];
 
 dump($gtins);

@@ -2,7 +2,7 @@
     "name": "nzutautas/gtin",
     "autoload": {
         "psr-4": {
-            "Nzutautas\\Gtin\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
